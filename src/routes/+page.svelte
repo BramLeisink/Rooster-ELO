@@ -1,0 +1,2 @@
+<h1 class="text-2xl font-bold">Welkom bij Rooster 🐓</h1>
+<p>Dit wordt jouw dashboard! Bezoek <u><a href="https://bramleisink.github.io/rooster-documentation/">de Github</a></u> voor de documentatie.</p>
