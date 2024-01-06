@@ -5,6 +5,8 @@
 	let marksGroupedBySubject = [];
 	let marksGroupedByExamWeek = [];
 
+	let modalMark = {};
+
 	// Function to fetch data from marks.json
 	const fetchMarks = async () => {
 		const response = await fetch('src/routes/cijfers/marks.json');
@@ -41,6 +43,13 @@
 	onMount(() => {
 		fetchMarks();
 	});
+
+	// Define the function to log the mark object
+	function openMarkModal(mark) {
+		modalMark = mark;
+		mark_modal.showModal();
+		console.log(modalMark);
+	}
 </script>
 
 <div class="stats stats-vertical sm:stats-horizontal shadow">
@@ -81,7 +90,7 @@
 				</thead>
 				<tbody>
 					{#each marks.sort((a, b) => new Date(b.result.grades[0].date) - new Date(a.result.grades[0].date)) as mark}
-						<tr class="hover">
+						<tr class="hover" on:click={() => openMarkModal(mark)}>
 							<td
 								><b>{mark.id}</b> - {mark.name}
 								{#if mark.result.grades[mark.result.grades.length - 1].new}
@@ -118,7 +127,7 @@
 					</thead>
 					<tbody>
 						{#each marksGroupedBySubject[subject] as mark}
-							<tr class="hover">
+							<tr class="hover" on:click={() => openMarkModal(mark)}>
 								<td
 									><b>{mark.id}</b> - {mark.name}
 									{#if mark.result.grades[mark.result.grades.length - 1].new}
@@ -156,7 +165,7 @@
 					</thead>
 					<tbody>
 						{#each marksGroupedByExamWeek[examWeek] as mark}
-							<tr class="hover">
+							<tr class="hover" on:click={() => openMarkModal(mark)}>
 								<td
 									><b>{mark.id}</b> - {mark.name}
 									{#if mark.result.grades[mark.result.grades.length - 1].new}
@@ -178,3 +187,17 @@
 		{/each}
 	</div>
 </div>
+
+<dialog id="mark_modal" class="modal modal-bottom sm:modal-middle">
+	<div class="modal-box">
+		<form method="dialog">
+			<button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+		</form>
+		<h3 class="font-bold text-lg"><b>{modalMark.id}</b> - {modalMark.name}</h3>
+		<p class="py-4">WOW</p>
+		<div class="modal-action"><button class="btn">huh</button></div>
+	</div>
+	<form method="dialog" class="modal-backdrop">
+		<button>close</button>
+	</form>
+</dialog>
