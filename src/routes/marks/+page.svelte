@@ -9,7 +9,7 @@
 
 	// Function to fetch data from marks.json
 	const fetchMarks = async () => {
-		const response = await fetch('src/routes/cijfers/marks.json');
+		const response = await fetch('src/routes/marks/marks.json');
 		marks = await response.json();
 
 		marksGroupedBySubject = await marks.reduce((acc, obj) => {
