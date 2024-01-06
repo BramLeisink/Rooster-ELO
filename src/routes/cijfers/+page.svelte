@@ -80,7 +80,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					{#each marks as mark}
+					{#each marks.sort((a, b) => new Date(b.result.grades[0].date) - new Date(a.result.grades[0].date)) as mark}
 						<tr class="hover">
 							<td
 								><b>{mark.id}</b> - {mark.name}
