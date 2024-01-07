@@ -33,7 +33,7 @@
 		</a>
 	</li>
 	<li>
-		<a href="/cijfers">
+		<a href="/marks">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				class="fill-primary"

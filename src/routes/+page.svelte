@@ -1,3 +1,7 @@
+<head>
+	<title>Home</title>
+</head>
+
 <div class="hero min-h-screen">
 	<div class="hero-content text-center">
 		<div class="max-w-md">

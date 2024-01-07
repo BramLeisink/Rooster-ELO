@@ -52,6 +52,10 @@
 	}
 </script>
 
+<head>
+	<title>Cijfers</title>
+</head>
+
 <div class="stats stats-vertical sm:stats-horizontal shadow">
 	<div class="stat">
 		<div class="stat-title">Toetsen gemaakt</div>
@@ -150,6 +154,45 @@
 	</div>
 
 	<input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="Toetsweken" />
+	<div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
+		{#each Object.keys(marksGroupedByExamWeek) as examWeek}
+			<h3 class="text-xl font-bold capitalize">Toetsweek {examWeek}</h3>
+			<div class="overflow-x-auto mb-3">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Naam</th>
+							<th>Vak</th>
+							<th>Cijfer</th>
+							<th>Weging</th>
+						</tr>
+					</thead>
+					<tbody>
+						{#each marksGroupedByExamWeek[examWeek] as mark}
+							<tr class="hover" on:click={() => openMarkModal(mark)}>
+								<td
+									><b>{mark.id}</b> - {mark.name}
+									{#if mark.result.grades[mark.result.grades.length - 1].new}
+										<div class="badge badge-primary ml-2">nieuw</div>
+									{/if}</td
+								>
+								<td class="capitalize">{mark.subject.name}</td>
+								<td
+									class="text-{mark.result.grades[mark.result.grades.length - 1].pass
+										? 'success'
+										: 'error'}">{mark.result.grades[mark.result.grades.length - 1].grade}</td
+								>
+								<td>{mark.weight}</td>
+							</tr>
+						{/each}
+					</tbody>
+				</table>
+			</div>
+		{/each}
+	</div>
+
+	<input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="Aankomend" />
+	<!-- TODO: fix this shit so it is really aankomend. -->
 	<div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
 		{#each Object.keys(marksGroupedByExamWeek) as examWeek}
 			<h3 class="text-xl font-bold capitalize">Toetsweek {examWeek}</h3>
