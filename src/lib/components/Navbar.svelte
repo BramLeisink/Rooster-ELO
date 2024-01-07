@@ -1,3 +1,7 @@
+<script>
+	import { base } from '$app/paths';
+</script>
+
 <div class="navbar bg-base-200">
 	<div class="flex-1">
 		<label for="my-drawer-2" class="btn btn-ghost drawer-button lg:hidden"
@@ -12,7 +16,7 @@
 				/></svg
 			></label
 		>
-		<a href="/" class="btn btn-ghost text-xl">Rooster 🐓</a>
+		<a href="{base}/" class="btn btn-ghost text-xl">Rooster 🐓</a>
 	</div>
 	<div class="flex-none gap-2">
 		<div class="form-control hidden lg:block">
