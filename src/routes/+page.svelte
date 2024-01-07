@@ -1,3 +1,7 @@
+<script>
+	import { base } from '$app/paths';
+</script>
+
 <head>
 	<title>Home</title>
 </head>
@@ -11,7 +15,7 @@
 					><a href="https://bramleisink.github.io/rooster-documentation/">de Github</a></u
 				> voor de documentatie.
 			</p>
-			<a href="/marks" class="btn btn-primary">Cijfers bekijken</a>
+			<a href="{base}/marks" class="btn btn-primary">Cijfers bekijken</a>
 		</div>
 	</div>
 </div>
