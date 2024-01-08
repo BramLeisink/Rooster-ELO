@@ -36,9 +36,9 @@
 				tabindex="0"
 				class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
 			>
-				<li><a href="/">Profiel</a></li>
-				<li><a href="/">Instellingen</a></li>
-				<li><a href="/">Uitloggen</a></li>
+				<li><a href="{base}/">Profiel</a></li>
+				<li><a href="{base}/">Instellingen</a></li>
+				<li><a href="{base}/">Uitloggen</a></li>
 			</ul>
 		</div>
 	</div>
