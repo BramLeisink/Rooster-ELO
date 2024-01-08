@@ -7,7 +7,7 @@
 		<input type="text" placeholder="Search" class="input input-bordered w-full md:w-auto" />
 	</div>
 	<li>
-		<a href="{base}/">
+		<a href="/">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				class="fill-primary"
@@ -22,7 +22,7 @@
 		</a>
 	</li>
 	<li>
-		<a href="{base}/agenda">
+		<a href="/agenda">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				class="fill-primary"
@@ -37,7 +37,7 @@
 		</a>
 	</li>
 	<li>
-		<a href="{base}/marks">
+		<a href="/marks">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				class="fill-primary"
