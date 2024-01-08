@@ -1,7 +1,3 @@
-<script>
-	import { base } from '$app/paths';
-</script>
-
 <head>
 	<title>Agenda</title>
 </head>
