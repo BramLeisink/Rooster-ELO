@@ -16,10 +16,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 ## Een platform voor alles
 
----
-**NOTE**
 
-Voor verdere documentatie zie https://github.com/BramLeisink/rooster-documentation
 
---- 
+
+> 📝 Voor verdere documentatie zie https://github.com/BramLeisink/rooster-documentation
+
 
