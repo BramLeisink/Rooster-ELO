@@ -12,7 +12,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 
 ## Custom dashboard
-
+Wij vinden het belangrijk dat de gebruiker een voor hen handige layout heeft van de website daarom kun je bij rooster je eigen layout kiezen. Zo kan de gebruiker optimaal gebruik maken van Rooster.
 
 ## Een platform voor alles
 
