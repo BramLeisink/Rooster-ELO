@@ -1,5 +1,6 @@
 <script>
 	import { base } from '$app/paths';
+	import { User, Settings, LogOut } from 'lucide-svelte';
 </script>
 
 <div class="navbar bg-base-200">
@@ -36,9 +37,9 @@
 				tabindex="0"
 				class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
 			>
-				<li><a href="{base}/">Profiel</a></li>
-				<li><a href="{base}/">Instellingen</a></li>
-				<li><a href="{base}/">Uitloggen</a></li>
+				<li><a href="{base}/"><User class="inline text-base-content w-4 h-4" />Profiel</a></li>
+				<li><a href="{base}/"><Settings class="inline text-base-content w-4 h-4" />Instellingen</a></li>
+				<li><a href="{base}/"><LogOut class="inline text-base-content w-4 h-4" />Uitloggen</a></li>
 			</ul>
 		</div>
 	</div>

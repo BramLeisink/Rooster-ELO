@@ -1,5 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
+	import { TrendingUp } from 'lucide-svelte';
 
 	// Example for the marks database
 	let exampleMarks = [
@@ -220,7 +221,7 @@
 	<div class="stat">
 		<div class="stat-title">Gemiddelde</div>
 		<div class="stat-value">8,24</div>
-		<div class="stat-desc text-success">↗︎ 0,46 (5,5%)</div>
+		<div class="stat-desc text-success"><TrendingUp class="text-success w-3 h-3 inline" /> 0,46 (5,5%)</div>
 	</div>
 
 	<div class="stat">
