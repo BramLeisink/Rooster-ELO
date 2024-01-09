@@ -1,38 +1,25 @@
-# create-svelte
+# Rooster ELO
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. At elementum eu facilisis sed odio. Turpis nunc eget lorem dolor sed viverra. Volutpat lacus laoreet non curabitur gravida arcu ac tortor.
+## Open source
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
 
-## Creating a project
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Uitbreidbaar
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
 
-## Developing
+## Verbeterde privacy
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
-```bash
-npm run dev
+## Custom dashboard
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
 
-## Building
+## Een platform voor alles
 
-To create a production version of your app:
+---
+**NOTE**
 
-```bash
-npm run build
-```
+Voor verdere documentatie zie https://github.com/BramLeisink/rooster-documentation
 
-You can preview the production build with `npm run preview`.
+--- 
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
