@@ -1,6 +1,126 @@
 <script>
 	import { onMount } from 'svelte';
 
+	// Example for the marks database
+	let exampleMarks = [
+		{
+			id: 'T401',
+			name: 'H1 Bewegingen beschrijven',
+			subject: {
+				id: 'nat',
+				name: 'natuurkunde'
+			},
+			retakable: true,
+			weight: 1,
+			type: 'exam',
+			conduct: {
+				planned: true,
+				date: '2023-10-18',
+				semester: 1,
+				inExamWeek: true,
+				duration: 90
+			},
+			result: {
+				grades: [
+					{
+						grade: '8.9',
+						pass: true,
+						date: '2023-10-18',
+						new: false,
+						feedback: ''
+					}
+				]
+			}
+		},
+		{
+			id: 'T402',
+			name: 'Leesvaardigheid',
+			subject: {
+				id: 'entl',
+				name: 'Engels'
+			},
+			retakable: false,
+			weight: 1,
+			type: 'exam',
+			conduct: {
+				planned: true,
+				date: '2023-10-19',
+				semester: 1,
+				inExamWeek: true,
+				duration: 45
+			},
+			result: {
+				grades: [
+					{
+						grade: '7.9',
+						pass: true,
+						date: '2023-10-28',
+						new: true,
+						feedback: ''
+					}
+				]
+			}
+		},
+		{
+			id: 'T401',
+			name: 'Levensloop deel 1',
+			subject: {
+				id: 'econ',
+				name: 'Economie'
+			},
+			retakable: false,
+			weight: 1,
+			type: 'exam',
+			conduct: {
+				planned: true,
+				date: '2023-9-7',
+				semester: 1,
+				inExamWeek: false,
+				duration: 45
+			},
+			result: {
+				grades: [
+					{
+						grade: '5.0',
+						pass: false,
+						date: '2023-9-12',
+						new: false,
+						feedback: ''
+					}
+				]
+			}
+		},
+		{
+			id: 'T402',
+			name: 'Levensloop deel 2',
+			subject: {
+				id: 'econ',
+				name: 'Economie'
+			},
+			retakable: false,
+			weight: 2,
+			type: 'exam',
+			conduct: {
+				planned: true,
+				date: '2023-10-16',
+				semester: 1,
+				inExamWeek: true,
+				duration: 90
+			},
+			result: {
+				grades: [
+					{
+						grade: '7.0',
+						pass: true,
+						date: '2023-10-20',
+						new: true,
+						feedback: ''
+					}
+				]
+			}
+		}
+	];
+
 	let marks = [];
 	let marksGroupedBySubject = [];
 	let marksGroupedByExamWeek = [];
@@ -9,8 +129,7 @@
 
 	// Function to fetch data from marks.json
 	const fetchMarks = async () => {
-		const response = await fetch('src/routes/marks/marks.json');
-		marks = await response.json();
+		marks = exampleMarks;
 
 		marksGroupedBySubject = await marks.reduce((acc, obj) => {
 			const subject = obj.subject.name;
