@@ -5,9 +5,12 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 
 ## Uitbreidbaar
+In de basis is Rooster alleen een agenda maar je hebt functies, functies kan de beheerder van de school of instantie uit of aan zetten.<br>
+Voorbeelden van functies zijn:
+1. Cijfers
+2. Huiswerk opgeven<br>
 
-
-
+Buiten functies heb je ook nog extensies, extensies kunnen door Rooster zelf zijn gecreeërd maar ze kunnen ook gecreeërd worden door mensen van buitenaf, iedereen kan een extensie maken. Door middel van extensies kunnen we de basis van Rooster heel simpel houden met mogelijkheid op uitbreiding.
 ## Verbeterde privacy
 
 
