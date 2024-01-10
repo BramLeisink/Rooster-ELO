@@ -1,6 +1,10 @@
 # Rooster ELO
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. At elementum eu facilisis sed odio. Turpis nunc eget lorem dolor sed viverra. Volutpat lacus laoreet non curabitur gravida arcu ac tortor.
 ## Open source
+Rooster ELO is open source dit betekend dat het programma zelf gratis is en gratis gebruikt mag worden. Maar je moet het ook nog hosten hiervoor zijn 2 opties<br>
+
+Optie 1. De school host het zelf bij deze optie is alles compleet gratis behalve de hostkosten van de school.<br>
+Optie 2. Het word gehost door Rooster zelf
 
 
 
