@@ -1,5 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
+	import { TrendingUp } from 'lucide-svelte';
 
 	// Example for the marks database
 	let exampleMarks = [
@@ -118,10 +119,43 @@
 					}
 				]
 			}
+		},
+		{
+			id: 'T403',
+			name: 'Levensloop afsluiting',
+			subject: {
+				id: 'econ',
+				name: 'Economie'
+			},
+			retakable: true,
+			weight: 2,
+			type: 'exam',
+			conduct: {
+				planned: true,
+				date: '2023-11-16',
+				semester: 1,
+				inExamWeek: true,
+				duration: 90
+			},
+			result: {
+				grades: [
+					{
+						grade: '7.0',
+						pass: true,
+						date: '2023-11-20',
+						new: true,
+						feedback: ''
+					}, {
+						grade: '',
+					}
+
+				]
+			}
 		}
 	];
 
 	let marks = [];
+	let marksToBeGraded = [];
 	let marksGroupedBySubject = [];
 	let marksGroupedByExamWeek = [];
 
@@ -130,6 +164,8 @@
 	// Function to fetch data from marks.json
 	const fetchMarks = async () => {
 		marks = exampleMarks;
+
+		marksToBeGraded = marks.filter(mark => !mark.result.grades[mark.result.grades.length - 1]?.grade);
 
 		marksGroupedBySubject = await marks.reduce((acc, obj) => {
 			const subject = obj.subject.name;
@@ -185,7 +221,7 @@
 	<div class="stat">
 		<div class="stat-title">Gemiddelde</div>
 		<div class="stat-value">8,24</div>
-		<div class="stat-desc text-success">↗︎ 0,46 (5,5%)</div>
+		<div class="stat-desc text-success"><TrendingUp class="text-success w-3 h-3 inline" /> 0,46 (5,5%)</div>
 	</div>
 
 	<div class="stat">
@@ -200,8 +236,8 @@
 <div role="tablist" class="tabs tabs-lifted pt-5">
 	<input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="Recent" checked />
 	<div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
-		<h3 class="text-xl font-bold">Recent toegevoegd</h3>
-		<div class="overflow-x-auto">
+		<h3 class="text-xl font-bold">Recent nagekeken</h3>
+		<div class="overflow-x-auto mb-3">
 			<table class="table">
 				<thead>
 					<tr>
@@ -212,7 +248,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					{#each marks.sort((a, b) => new Date(b.result.grades[0].date) - new Date(a.result.grades[0].date)) as mark}
+					{#each marks.sort((a, b) => new Date(b.result.grades[0].date) - new Date(a.result.grades[0].date)).filter(mark => mark.result.grades[mark.result.grades.length - 1]?.grade) as mark}
 						<tr class="hover" on:click={() => openMarkModal(mark)}>
 							<td
 								><b>{mark.id}</b> - {mark.name}
@@ -225,6 +261,36 @@
 								class="text-{mark.result.grades[mark.result.grades.length - 1].pass
 									? 'success'
 									: 'error'}">{mark.result.grades[mark.result.grades.length - 1].grade}</td
+							>
+							<td>{mark.weight}</td>
+						</tr>
+					{/each}
+				</tbody>
+			</table>
+		</div>
+
+		<h3 class="text-xl font-bold">Nog niet nagekeken</h3>
+		<div class="overflow-x-auto mb-3">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Naam</th>
+						<th>Vak</th>
+						<th>Datum</th>
+						<th>Weging</th>
+					</tr>
+				</thead>
+				<tbody>
+					{#each marksToBeGraded as mark}
+						<tr class="hover" on:click={() => openMarkModal(mark)}>
+							<td
+								><b>{mark.id}</b> - {mark.name}
+								{#if mark.result.grades[mark.result.grades.length - 1].new}
+									<div class="badge badge-primary ml-2">nieuw</div>
+								{/if}</td
+							>
+							<td class="capitalize">{mark.subject.name}</td>
+							<td	class="">{mark.conduct.date}</td
 							>
 							<td>{mark.weight}</td>
 						</tr>
@@ -313,40 +379,10 @@
 	<input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="Aankomend" />
 	<!-- TODO: fix this shit so it is really aankomend. -->
 	<div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
-		{#each Object.keys(marksGroupedByExamWeek) as examWeek}
-			<h3 class="text-xl font-bold capitalize">Toetsweek {examWeek}</h3>
-			<div class="overflow-x-auto mb-3">
-				<table class="table">
-					<thead>
-						<tr>
-							<th>Naam</th>
-							<th>Vak</th>
-							<th>Cijfer</th>
-							<th>Weging</th>
-						</tr>
-					</thead>
-					<tbody>
-						{#each marksGroupedByExamWeek[examWeek] as mark}
-							<tr class="hover" on:click={() => openMarkModal(mark)}>
-								<td
-									><b>{mark.id}</b> - {mark.name}
-									{#if mark.result.grades[mark.result.grades.length - 1].new}
-										<div class="badge badge-primary ml-2">nieuw</div>
-									{/if}</td
-								>
-								<td class="capitalize">{mark.subject.name}</td>
-								<td
-									class="text-{mark.result.grades[mark.result.grades.length - 1].pass
-										? 'success'
-										: 'error'}">{mark.result.grades[mark.result.grades.length - 1].grade}</td
-								>
-								<td>{mark.weight}</td>
-							</tr>
-						{/each}
-					</tbody>
-				</table>
-			</div>
-		{/each}
+		<h3 class="text-xl font-bold capitalize">Deze week</h3>
+		<p class="mb-3">Alle toetsen van deze week die nog niet gemaakt zijn komen hier te staan</p>
+		<h3 class="text-xl font-bold capitalize">Deze periode</h3>
+		<p class="mb-3">Alle toetsen van deze periode die nog niet zijn gemaakt en niet deze week zijn komen hier te staan</p>
 	</div>
 </div>
 

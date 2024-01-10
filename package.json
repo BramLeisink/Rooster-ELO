@@ -33,6 +33,7 @@
 	"type": "module",
 	"dependencies": {
 		"@sveltejs/adapter-vercel": "^4.0.4",
-		"@tailwindcss/typography": "^0.5.10"
+		"@tailwindcss/typography": "^0.5.10",
+		"lucide-svelte": "^0.308.0"
 	}
 }
