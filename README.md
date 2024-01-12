@@ -1,13 +1,20 @@
 # Rooster ELO
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. At elementum eu facilisis sed odio. Turpis nunc eget lorem dolor sed viverra. Volutpat lacus laoreet non curabitur gravida arcu ac tortor.
 ## Open source
+Rooster ELO is open source dit betekend dat het programma zelf gratis is en gratis gebruikt mag worden. Maar je moet het ook nog hosten hiervoor zijn 2 opties<br>
+
+Optie 1. De school host het zelf bij deze optie is alles compleet gratis behalve de hostkosten van de school.<br>
+Optie 2. Het word gehost door Rooster zelf
 
 
 
 ## Uitbreidbaar
+In de basis is Rooster alleen een agenda maar je hebt functies, functies kan de beheerder van de school of instantie uit of aan zetten.<br>
+Voorbeelden van functies zijn:
+1. Cijfers
+2. Huiswerk opgeven<br>
 
-
-
+Buiten functies heb je ook nog extensies, extensies kunnen door Rooster zelf zijn gecreeërd maar ze kunnen ook gecreeërd worden door mensen van buitenaf, iedereen kan een extensie maken. Door middel van extensies kunnen we de basis van Rooster heel simpel houden met mogelijkheid op uitbreiding.
 ## Verbeterde privacy
 
 

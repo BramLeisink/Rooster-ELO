@@ -37,8 +37,8 @@
 				tabindex="0"
 				class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
 			>
-				<li><a href="{base}/"><User class="inline text-base-content w-4 h-4" />Profiel</a></li>
-				<li><a href="{base}/"><Settings class="inline text-base-content w-4 h-4" />Instellingen</a></li>
+				<li><a href="{base}/profile"><User class="inline text-base-content w-4 h-4" />Profiel</a></li>
+				<li><a href="{base}/settings"><Settings class="inline text-base-content w-4 h-4" />Instellingen</a></li>
 				<li><a href="{base}/"><LogOut class="inline text-base-content w-4 h-4" />Uitloggen</a></li>
 			</ul>
 		</div>
