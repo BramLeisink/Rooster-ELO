@@ -7,7 +7,7 @@
 
 <div class="card w-96 h-96 bg-base-100 shadow-xl content-center">
   <div class="card-body items-center text-center">
-<div class="avatar rounded-full hover:opacity-90 hover:cursor-pointer">
+<div class="avatar rounded-full hover:opacity-60 hover:cursor-pointer">
   <div class="w-60 rounded-full">
     <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
   </div>
