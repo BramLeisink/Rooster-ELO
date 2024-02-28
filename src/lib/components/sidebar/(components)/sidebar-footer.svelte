@@ -4,7 +4,7 @@
 	import * as Tooltip from '$lib/components/ui/tooltip';
 	import Sun from 'svelte-radix/Sun.svelte';
 	import Moon from 'svelte-radix/Moon.svelte';
-	import type { Route } from '../config.js';
+	import type { Route } from '../routes-data.js';
 
 	import { toggleMode } from 'mode-watcher';
 

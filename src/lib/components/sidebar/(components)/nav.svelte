@@ -2,7 +2,7 @@
 	import { Button } from "$lib/components/ui/button";
 	import { cn } from "$lib/utils";
 	import * as Tooltip from "$lib/components/ui/tooltip";
-	import type { Route } from "../config.js";
+	import type { Route } from "../routes-data.js";
 
 	export let isCollapsed: boolean;
 	export let routes: Route[];
