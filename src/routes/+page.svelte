@@ -62,25 +62,3 @@
 		</div>
 	{/each}
 </Grid>
-
-<style>
-	.item {
-		display: grid;
-		place-items: center;
-		background-color: rgb(150, 150, 150);
-		width: 100%;
-		height: 100%;
-	}
-	.remove {
-		cursor: pointer;
-		position: absolute;
-		right: 10px;
-		top: 3px;
-	}
-	.btn {
-		margin-top: 10px;
-		margin-left: 10px;
-		right: 2px;
-		top: 1px;
-	}
-</style>
