@@ -14,3 +14,6 @@ export { default as ShoppingCart } from "lucide-svelte/icons/shopping-cart";
 export { default as Trash2 } from "lucide-svelte/icons/trash-2";
 export { default as Users } from "lucide-svelte/icons/users";
 export { default as Settings } from "lucide-svelte/icons/settings";
+export { default as Home } from "lucide-svelte/icons/home";
+export { default as GraduationCap } from "lucide-svelte/icons/graduation-cap";
+export { default as CalendarClock} from "lucide-svelte/icons/calendar-clock"

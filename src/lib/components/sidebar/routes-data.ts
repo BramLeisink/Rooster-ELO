@@ -12,21 +12,21 @@ export type Route = {
 
 export const primaryRoutes: Route[] = [
 	{
-		title: 'Inbox',
+		title: 'Home',
 		label: '128',
-		icon: Icons.Inbox,
+		icon: Icons.Home,
 		variant: 'default'
 	},
 	{
-		title: 'Drafts',
-		label: '9',
-		icon: Icons.File,
+		title: 'Agenda',
+		label: '',
+		icon: Icons.CalendarClock,
 		variant: 'ghost'
 	},
 	{
-		title: 'Sent',
-		label: '',
-		icon: Icons.Send,
+		title: 'Cijfers',
+		label: '9',
+		icon: Icons.GraduationCap,
 		variant: 'ghost'
 	},
 	{
