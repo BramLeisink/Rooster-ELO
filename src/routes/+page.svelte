@@ -62,39 +62,42 @@
 	import { Toggle } from '$lib/components/ui/toggle';
 </script>
 
-<div class="flex gap-4 p-4">
-	<Button disabled={layoutLocked} variant="outline" on:click={addNewItem}>Add New Item</Button>
-	<Button disabled={layoutLocked} variant="outline" on:click={resetGrid}>Reset Grid</Button>
-	<Toggle aria-label="toggle bold" variant="outline" bind:pressed={layoutLocked}>
-		<Lock class="h-4 w-4" />
-	</Toggle>
-</div>
+<div class="max-h-screen">
+	<div class="m-2 flex gap-4">
+		<Button disabled={layoutLocked} variant="outline" on:click={addNewItem}>Add New Item</Button>
+		<Button disabled={layoutLocked} variant="outline" on:click={resetGrid}>Reset Grid</Button>
+		<Toggle aria-label="toggle bold" variant="outline" bind:pressed={layoutLocked}>
+			<Lock class="h-4 w-4" />
+		</Toggle>
+	</div>
 
-<div class="h-full w-full overflow-auto {layoutLocked ? 'normal-grid' : 'downsized-grid'}">
-	<Grid
-		{itemSize}
-		cols={10}
-		collision="push"
-		bind:controller={gridController}
-		on:change={updateLayoutCookie}
-		readOnly={layoutLocked}
-	>
-		{#each items as item (item.id)}
-			<div transition:fade={{ duration: 300 }}>
-				<GridItem id={item.id} x={item.x} y={item.y} w={item.w} h={item.h}>
-					<Card.Root class="h-full w-full overflow-auto">
-						<Card.Header>
-							<Card.Title>{item.id.slice(0, 5)}</Card.Title>
-							<Card.Description>Sleep mij</Card.Description>
-						</Card.Header>
-						<Card.Footer class="flex justify-between">
-							<Button on:click={() => remove(item.id)} class="remove">Remove</Button>
-						</Card.Footer>
-					</Card.Root>
-				</GridItem>
-			</div>
-		{/each}
-	</Grid>
+	<div class="w-full {layoutLocked ? 'normal-grid' : 'downsized-grid'}">
+		<Grid
+			{itemSize}
+			cols={8}
+			rows={8}
+			collision="push"
+			bind:controller={gridController}
+			on:change={updateLayoutCookie}
+			readOnly={layoutLocked}
+		>
+			{#each items as item (item.id)}
+				<div transition:fade={{ duration: 300 }}>
+					<GridItem id={item.id} bind:x={item.x} bind:y={item.y} bind:w={item.w} bind:h={item.h}>
+						<Card.Root class="h-full w-full overflow-auto">
+							<Card.Header>
+								<Card.Title>{item.id.slice(0, 5)}</Card.Title>
+								<Card.Description>Sleep mij</Card.Description>
+							</Card.Header>
+							<Card.Footer class="flex justify-between">
+								<Button on:click={() => remove(item.id)} class="remove">Remove</Button>
+							</Card.Footer>
+						</Card.Root>
+					</GridItem>
+				</div>
+			{/each}
+		</Grid>
+	</div>
 </div>
 
 <style>

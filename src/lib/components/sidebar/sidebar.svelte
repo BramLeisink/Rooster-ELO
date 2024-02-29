@@ -51,7 +51,7 @@
 	}
 </script>
 
-<Button on:click={toggleSidebar}>Toggle</Button>
+<!-- <Button on:click={toggleSidebar}>Toggle</Button> -->
 
 <div class="">
 	<Resizable.PaneGroup
@@ -69,7 +69,7 @@
 				bind:pane={sidebarPane}
 				{onCollapse}
 				{onExpand}
-				order={1}
+				order={0}
 			>
 				<div class={cn('flex h-screen flex-col')}>
 					<div
@@ -93,7 +93,9 @@
 			<Resizable.Handle withHandle />
 		{/if}
 		<Resizable.Pane defaultSize={defaultLayout[1]} minSize={30} order={1}>
-			<slot />
+			<div class="h-full overflow-auto">
+				<slot />
+			</div>
 		</Resizable.Pane>
 	</Resizable.PaneGroup>
 </div>

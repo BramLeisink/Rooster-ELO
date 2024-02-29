@@ -9,6 +9,6 @@
 
 <ModeWatcher />
 
-<Sidebar defaultLayout={data.layout} defaultCollapsed={data.collapsed} navCollapsedSize={4}
-	><slot /></Sidebar
->
+<Sidebar defaultLayout={data.layout} defaultCollapsed={data.collapsed} navCollapsedSize={4}>
+	<slot />
+</Sidebar>
