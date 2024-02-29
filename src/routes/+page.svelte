@@ -23,6 +23,8 @@
 		items = data.layout;
 	}
 
+	let layoutLocked = true;
+
 	let gridController: GridController;
 
 	const itemsBackup = structuredClone(items);
@@ -34,42 +36,53 @@
 	}
 
 	function remove(id: string) {
-		items = items.filter((i) => i.id !== id);
-		updateLayoutCookie();
+		if (!layoutLocked) {
+			items = items.filter((i) => i.id !== id);
+			updateLayoutCookie();
+		}
 	}
 
 	function addNewItem() {
-		const w = Math.floor(Math.random() * 2) + 1;
-		const h = Math.floor(Math.random() * 5) + 1;
-		const newPosition = gridController.getFirstAvailablePosition(w, h);
-		items = newPosition
-			? [...items, { id: crypto.randomUUID(), x: newPosition.x, y: newPosition.y, w, h }]
-			: items;
-		updateLayoutCookie();
+		if (!layoutLocked) {
+			const w = Math.floor(Math.random() * 2) + 1;
+			const h = Math.floor(Math.random() * 5) + 1;
+			const newPosition = gridController.getFirstAvailablePosition(w, h);
+			items = newPosition
+				? [...items, { id: crypto.randomUUID(), x: newPosition.x, y: newPosition.y, w, h }]
+				: items;
+			updateLayoutCookie();
+		}
 	}
 
 	function updateLayoutCookie() {
 		document.cookie = `Dashboard:layout=${JSON.stringify(items)}`;
 	}
+
+	import Lock from 'lucide-svelte/icons/lock';
+	import { Toggle } from '$lib/components/ui/toggle';
 </script>
 
 <div class="flex gap-4 p-4">
-	<Button variant="outline" on:click={addNewItem}>Add New Item</Button>
-	<Button variant="outline" on:click={resetGrid}>Reset Grid</Button>
+	<Button disabled={layoutLocked} variant="outline" on:click={addNewItem}>Add New Item</Button>
+	<Button disabled={layoutLocked} variant="outline" on:click={resetGrid}>Reset Grid</Button>
+	<Toggle aria-label="toggle bold" variant="outline" bind:pressed={layoutLocked}>
+		<Lock class="h-4 w-4" />
+	</Toggle>
 </div>
 
-<div class="h-full w-full overflow-scroll">
+<div class="h-full w-full overflow-auto {layoutLocked ? 'normal-grid' : 'downsized-grid'}">
 	<Grid
 		{itemSize}
 		cols={10}
 		collision="push"
 		bind:controller={gridController}
 		on:change={updateLayoutCookie}
+		readOnly={layoutLocked}
 	>
 		{#each items as item (item.id)}
 			<div transition:fade={{ duration: 300 }}>
-				<GridItem id={item.id} bind:x={item.x} bind:y={item.y} bind:w={item.w} bind:h={item.h}>
-					<Card.Root class="h-full w-full overflow-scroll">
+				<GridItem id={item.id} x={item.x} y={item.y} w={item.w} h={item.h}>
+					<Card.Root class="h-full w-full overflow-auto">
 						<Card.Header>
 							<Card.Title>{item.id.slice(0, 5)}</Card.Title>
 							<Card.Description>Sleep mij</Card.Description>
@@ -83,3 +96,14 @@
 		{/each}
 	</Grid>
 </div>
+
+<style>
+	.downsized-grid {
+		transform: scale(0.8); /* Adjust the scale factor as needed */
+		transition: transform 0.3s ease; /* Add transition effect */
+	}
+	.normal-grid {
+		transform: scale(1);
+		transition: transform 0.3s ease;
+	}
+</style>
