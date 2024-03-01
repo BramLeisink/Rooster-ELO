@@ -4,17 +4,13 @@
 	import { Button } from '$lib/components/ui/button';
 	import * as Card from '$lib/components/ui/card';
 	import { cn } from '$lib/utils';
+	import * as ContextMenu from "$lib/components/ui/context-menu";
 
 	let items = [
-		{ id: crypto.randomUUID(), x: 0, y: 0, w: 2, h: 5 },
-		{ id: crypto.randomUUID(), x: 2, y: 2, w: 2, h: 2 },
-		{ id: crypto.randomUUID(), x: 2, y: 0, w: 1, h: 2 },
-		{ id: crypto.randomUUID(), x: 3, y: 0, w: 2, h: 2 },
-		{ id: crypto.randomUUID(), x: 4, y: 2, w: 1, h: 3 },
-		{ id: crypto.randomUUID(), x: 8, y: 0, w: 2, h: 8 },
-		{ id: crypto.randomUUID(), x: 4, y: 5, w: 1, h: 1 },
-		{ id: crypto.randomUUID(), x: 2, y: 6, w: 3, h: 2 },
-		{ id: crypto.randomUUID(), x: 2, y: 4, w: 2, h: 2 }
+		{ id: crypto.randomUUID(), x: 5, y: 0, w: 3, h: 6 },
+		{ id: crypto.randomUUID(), x: 3, y: 0, w: 2, h: 6 },
+		{ id: crypto.randomUUID(), x: 3, y: 6, w: 5, h: 2 },
+		{ id: crypto.randomUUID(), x: 0, y: 0, w: 3, h: 8 }
 	];
 
 	export let data;
@@ -60,9 +56,10 @@
 
 	import Lock from 'lucide-svelte/icons/lock';
 	import { Toggle } from '$lib/components/ui/toggle';
+	import SimpleItem from '$lib/components/dashboard_items/simpleItem.svelte';
 </script>
 
-<div class="max-h-screen">
+<div class="flex h-screen flex-col">
 	<div class="m-2 flex gap-4">
 		<Button disabled={layoutLocked} variant="outline" on:click={addNewItem}>Add New Item</Button>
 		<Button disabled={layoutLocked} variant="outline" on:click={resetGrid}>Reset Grid</Button>
@@ -70,8 +67,7 @@
 			<Lock class="h-4 w-4" />
 		</Toggle>
 	</div>
-
-	<div class="w-full {layoutLocked ? 'normal-grid' : 'downsized-grid'}">
+	<div class="h-full w-full overflow-auto border {layoutLocked ? 'normal-grid' : 'downsized-grid'}">
 		<Grid
 			{itemSize}
 			cols={8}
@@ -84,15 +80,7 @@
 			{#each items as item (item.id)}
 				<div transition:fade={{ duration: 300 }}>
 					<GridItem id={item.id} bind:x={item.x} bind:y={item.y} bind:w={item.w} bind:h={item.h}>
-						<Card.Root class="h-full w-full overflow-auto">
-							<Card.Header>
-								<Card.Title>{item.id.slice(0, 5)}</Card.Title>
-								<Card.Description>Sleep mij</Card.Description>
-							</Card.Header>
-							<Card.Footer class="flex justify-between">
-								<Button on:click={() => remove(item.id)} class="remove">Remove</Button>
-							</Card.Footer>
-						</Card.Root>
+						<SimpleItem {item} removeItem={remove} />
 					</GridItem>
 				</div>
 			{/each}
