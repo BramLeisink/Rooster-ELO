@@ -6,86 +6,85 @@ import type { Icon } from 'lucide-svelte';
 export type Route = {
 	title: string;
 	label: string;
+	href: string;
 	icon: ComponentType<Icon>;
-	variant: 'default' | 'ghost';
+	variant: 'default' | 'ghost' | 'outline';
 };
 
 export const primaryRoutes: Route[] = [
 	{
 		title: 'Home',
-		label: '128',
+		label: '',
+		href: '/',
 		icon: Icons.Home,
-		variant: 'default'
+		variant: 'outline'
 	},
 	{
 		title: 'Agenda',
 		label: '',
+		href: '/agenda',
 		icon: Icons.CalendarClock,
 		variant: 'ghost'
 	},
 	{
 		title: 'Cijfers',
-		label: '9',
+		label: '2',
+		href: '/cijfers',
 		icon: Icons.GraduationCap,
 		variant: 'ghost'
 	},
 	{
-		title: 'Junk',
-		label: '23',
-		icon: Icons.ArchiveX,
+		title: 'Huiswerk',
+		label: '5',
+		href: '/huiswerk',
+		icon: Icons.CheckCircle,
 		variant: 'ghost'
 	},
 	{
-		title: 'Trash',
+		title: 'Presentie',
 		label: '',
-		icon: Icons.Trash2,
+		href: '/presentie',
+		icon: Icons.UserCheck,
 		variant: 'ghost'
 	},
-	{
-		title: 'Archive',
-		label: '',
-		icon: Icons.Archive,
-		variant: 'ghost'
-	}
 ];
 
 export const secondaryRoutes: Route[] = [
 	{
-		title: 'Social',
-		label: '972',
+		title: 'Boeken',
+		label: '',
+		href: '/boeken',
+		icon: Icons.BookText,
+		variant: 'ghost'
+	},
+	{
+		title: 'Keuze uren',
+		label: '',
+		href: '/keuze-uren',
+		icon: Icons.CircleDot,
+		variant: 'ghost'
+	},
+	{
+		title: 'Docenten',
+		label: '',
+		href: '/docenten',
 		icon: Icons.Users,
 		variant: 'ghost'
 	},
 	{
-		title: 'Updates',
-		label: '342',
-		icon: Icons.AlertCircle,
+		title: 'Mail',
+		label: '3',
+		href: '/mail',
+		icon: Icons.Mail,
 		variant: 'ghost'
 	},
-	{
-		title: 'Forums',
-		label: '128',
-		icon: Icons.MessagesSquare,
-		variant: 'ghost'
-	},
-	{
-		title: 'Shopping',
-		label: '8',
-		icon: Icons.ShoppingCart,
-		variant: 'ghost'
-	},
-	{
-		title: 'Promotions',
-		label: '21',
-		icon: Icons.Archive,
-		variant: 'ghost'
-	}
 ];
 
 export const footerRoutes: Route[] = [
 	{
-		title: 'Settings',
+		title: 'Instellingen',
 		label: '',
+		href: '/settings',
 		icon: Icons.Settings,
 		variant: 'ghost'
 	},

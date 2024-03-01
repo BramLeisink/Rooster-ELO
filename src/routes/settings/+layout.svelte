@@ -4,7 +4,7 @@
 
 	const sidebarNavItems = [
 		{
-			title: "Profile",
+			title: "Profiel",
 			href: "/settings",
 		},
 		{
@@ -12,15 +12,15 @@
 			href: "/settings/account",
 		},
 		{
-			title: "Appearance",
+			title: "Uiterlijk",
 			href: "/settings/appearance",
 		},
 		{
-			title: "Notifications",
+			title: "Meldingen",
 			href: "/settings/notifications",
 		},
 		{
-			title: "Display",
+			title: "Weergave",
 			href: "/settings/display",
 		},
 	];
@@ -28,9 +28,9 @@
 
 <div class="space-y-6 p-10 pb-16">
 	<div class="space-y-0.5">
-		<h2 class="text-2xl font-bold tracking-tight">Settings</h2>
+		<h2 class="text-2xl font-bold tracking-tight">Instellingen</h2>
 		<p class="text-muted-foreground">
-			Manage your account settings and set e-mail preferences.
+			Beheer je accountinstellingen en pas je email voorkeuren aan.
 		</p>
 	</div>
 	<Separator class="my-6" />

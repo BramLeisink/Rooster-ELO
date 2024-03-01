@@ -16,4 +16,10 @@ export { default as Users } from "lucide-svelte/icons/users";
 export { default as Settings } from "lucide-svelte/icons/settings";
 export { default as Home } from "lucide-svelte/icons/home";
 export { default as GraduationCap } from "lucide-svelte/icons/graduation-cap";
-export { default as CalendarClock} from "lucide-svelte/icons/calendar-clock"
+export { default as CalendarClock } from "lucide-svelte/icons/calendar-clock"
+export { default as CheckCircle } from "lucide-svelte/icons/check-circle"
+export { default as UserCheck } from "lucide-svelte/icons/user-check"
+export { default as Mail } from "lucide-svelte/icons/mail"
+export { default as CircleDot } from "lucide-svelte/icons/circle-dot"
+export { default as BookText } from "lucide-svelte/icons/book-text"
+

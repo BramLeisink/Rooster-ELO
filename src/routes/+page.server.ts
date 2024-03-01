@@ -9,9 +9,10 @@ export const load: PageServerLoad = async (event: any) => {
 		y: number;
 		w: number;
 		h: number;
+		component: string;
 	}
 
-	let layout: DashboardItem[]  = [];
+	let layout: DashboardItem[] = [];
 
 	dashboardLayoutCookie && (layout = JSON.parse(dashboardLayoutCookie));
 

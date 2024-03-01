@@ -2,9 +2,10 @@
 	import { Button } from '$lib/components/ui/button';
 	import { cn } from '$lib/utils';
 	import * as Tooltip from '$lib/components/ui/tooltip';
-	import Sun from 'svelte-radix/Sun.svelte';
-	import Moon from 'svelte-radix/Moon.svelte';
+	import Sun from 'lucide-svelte/icons/sun';
+	import Moon from 'lucide-svelte/icons/moon';
 	import type { Route } from '../routes-data.js';
+	import { page } from '$app/stores';
 
 	import { toggleMode } from 'mode-watcher';
 
@@ -21,15 +22,15 @@
 				<Tooltip.Root openDelay={0}>
 					<Tooltip.Trigger asChild let:builder>
 						<Button
-							href="#"
+							href={route.href}
 							builders={[builder]}
 							variant={route.variant}
 							size="icon"
-							class={cn(
-								'size-9',
-								route.variant === 'default' &&
-									'dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white'
-							)}
+							class={cn('size-9', {
+								'bg-accent dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white':
+									(route.href === '/' && $page.url.pathname === route.href) ||
+									(route.href !== '/' && $page.url.pathname.startsWith(route.href))
+							})}
 						>
 							<svelte:component this={route.icon} class="size-4" aria-hidden="true" />
 							<span class="sr-only">{route.title}</span>
@@ -46,12 +47,13 @@
 				</Tooltip.Root>
 			{:else}
 				<Button
-					href="#"
+					href={route.href}
 					variant={route.variant}
 					size="sm"
 					class={cn('justify-start', {
-						'dark:bg-muted dark:text-white dark:hover:bg-muted dark:hover:text-white':
-							route.variant === 'default'
+						'bg-accent dark:text-white dark:hover:bg-muted dark:hover:text-white':
+							(route.href === '/' && $page.url.pathname === route.href) ||
+							(route.href !== '/' && $page.url.pathname.startsWith(route.href))
 					})}
 				>
 					<svelte:component this={route.icon} class="mr-2 size-4" aria-hidden="true" />
@@ -59,7 +61,9 @@
 					{#if route.label}
 						<span
 							class={cn('ml-auto', {
-								'text-background dark:text-white': route.variant === 'default'
+								'text-background dark:text-white':
+									(route.href === '/' && $page.url.pathname === route.href) ||
+									(route.href !== '/' && $page.url.pathname.startsWith(route.href))
 							})}
 						>
 							{route.label}
@@ -79,15 +83,15 @@
 						class={cn('size-9')}
 					>
 						<Sun
-							class="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
+						class="size-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" aria-hidden="true"
 						/>
 						<Moon
-							class="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"
+							class="absolute size-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"
 						/>
-						<span class="sr-only">Toggle theme</span>
+						<span class="sr-only">Wissel thema</span>
 					</Button>
 				</Tooltip.Trigger>
-				<Tooltip.Content side="right" class="flex items-center gap-4">Toggle theme</Tooltip.Content>
+				<Tooltip.Content side="right" class="flex items-center gap-4">Wissel thema</Tooltip.Content>
 			</Tooltip.Root>
 		{:else}
 			<Button on:click={toggleMode} variant="ghost" size="sm" class={cn('justify-start')}>
@@ -99,7 +103,7 @@
 					class="absolute mr-2 size-4 h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all  dark:rotate-0 dark:scale-100"
 					aria-hidden="true"
 				/>
-				Toggle theme
+				Wissel thema
 			</Button>
 		{/if}
 	</nav>

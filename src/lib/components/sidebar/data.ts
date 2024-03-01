@@ -188,18 +188,18 @@ export type Account = {
 
 export const accounts: Account[] = [
 	{
-		label: "Alicia Koch",
-		email: "alicia@example.com",
+		label: "Bram Leisink",
+		email: "bramleisink@edu.mondialcollege.nl",
 		icon: Vercel,
 	},
 	{
-		label: "Alicia Koch",
-		email: "alicia@gmail.com",
+		label: "Sander Teunissen",
+		email: "sanderteunissen@edu.mondialcollege.nl",
 		icon: Gmail,
 	},
 	{
-		label: "Alicia Koch",
-		email: "alicia@me.com",
+		label: "Bo Kersten",
+		email: "bokersten@edu.mondialcollege.nl",
 		icon: ICloud,
 	},
 ];
