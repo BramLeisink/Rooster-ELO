@@ -2,6 +2,7 @@
 	import CookieSettings from '$lib/components/dashboard/dashboard_items/cookie_settings.svelte';
 	import Leaderboard from '$lib/components/dashboard/dashboard_items/leaderboard.svelte';
 	import RecentMarks from '$lib/components/dashboard/dashboard_items/recent_marks.svelte';
+	import Average from '$lib/components/dashboard/dashboard_items/average.svelte';
 	import { fade } from 'svelte/transition';
 	import Grid, { GridItem, type GridController } from 'svelte-grid-extended';
 	import { Button } from '$lib/components/ui/button';
@@ -9,7 +10,7 @@
 	let items = [
 		{ id: crypto.randomUUID(), x: 5, y: 0, w: 3, h: 6, component: 'RecentMarks' },
 		{ id: crypto.randomUUID(), x: 3, y: 0, w: 2, h: 6, component: 'Leaderboard' },
-		{ id: crypto.randomUUID(), x: 3, y: 6, w: 5, h: 4, component: 'CookieSettings' },
+		{ id: crypto.randomUUID(), x: 3, y: 6, w: 5, h: 4, component: 'Average' },
 		{ id: crypto.randomUUID(), x: 0, y: 0, w: 3, h: 10, component: 'CookieSettings' }
 	];
 
@@ -21,6 +22,8 @@
 				return RecentMarks;
 			case 'Leaderboard':
 				return Leaderboard;
+			case 'Average':
+				return Average;
 			default:
 				return null; // Return null if no component found
 		}
@@ -91,7 +94,7 @@
 			<Lock class="h-4 w-4" />
 		</Toggle>
 	</div>
-	<div class="h-full w-full overflow-auto border {layoutLocked ? 'normal-grid' : 'downsized-grid'}">
+	<div class="h-full w-full overflow-auto border {layoutLocked ? 'normal-grid' : 'downsized-grid select-none'}">
 		<Grid
 			{itemSize}
 			cols={8}

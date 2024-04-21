@@ -1,74 +1,60 @@
 <script lang="ts">
-	import { Button } from '$lib/components/ui/button';
-	import ChevronDown from 'svelte-radix/ChevronDown.svelte';
-	import Circle from 'svelte-radix/Circle.svelte';
-	import Plus from 'svelte-radix/Plus.svelte';
-	import Star from 'svelte-radix/Star.svelte';
-	import * as Card from '$lib/components/ui/card';
-	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
-	import { Separator } from '$lib/components/ui/separator';
-	import BasicLayoutItem from './basic_layout_item.svelte';
+	import ArrowUpRight from 'lucide-svelte/icons/arrow-up-right';
+	import { Badge } from '$lib/components/ui/badge/index.js';
+	import { Button } from '$lib/components/ui/button/index.js';
+	import * as Card from '$lib/components/ui/card/index.js';
+	import * as Table from '$lib/components/ui/table/index.js';
 
-	interface DashboardItem {
-		id: `${string}-${string}-${string}-${string}-${string}`;
-		x: number;
-		y: number;
-		w: number;
-		h: number;
-	}
-
-	export let item: DashboardItem;
-	export let removeItem: (id: string) => void;
-	export let layoutLocked: boolean;
+	const marks = [
+		{
+			name: 'Vraag en aanbod (eindtoets)',
+			vak: 'economie',
+			received_grade: '9,3'
+		},
+		{ name: 'Leesvaardigheid', vak: 'Engelse taal en literatuur', received_grade: '8,9' }
+	];
 </script>
 
-<BasicLayoutItem {item} {removeItem} {layoutLocked}>
-	<Card.Root class="h-full w-full overflow-auto">
-		<Card.Header class="grid grid-cols-[1fr_110px] items-start gap-4 space-y-0">
-			<div class="space-y-1">
-				<Card.Title>shadcn/ui</Card.Title>
-				<Card.Description>
-					Beautifully designed components built with Radix UI and Tailwind CSS.
-				</Card.Description>
-			</div>
-			<div class="flex items-center space-x-1 rounded-md bg-secondary text-secondary-foreground">
-				<Button variant="secondary" class="px-3 shadow-none">
-					<Star class="mr-2 h-4 w-4" />
-					Star
-				</Button>
-				<Separator orientation="vertical" class="h-[20px]" />
-				<DropdownMenu.Root>
-					<DropdownMenu.Trigger asChild let:builder>
-						<Button builders={[builder]} variant="secondary" class="px-2 shadow-none">
-							<ChevronDown class="h-4 w-4 text-secondary-foreground" />
-						</Button>
-					</DropdownMenu.Trigger>
-					<DropdownMenu.Content class="w-[200px]" align="end">
-						<DropdownMenu.Label>Suggested Lists</DropdownMenu.Label>
-						<DropdownMenu.Separator />
-						<DropdownMenu.CheckboxItem checked>Future Ideas</DropdownMenu.CheckboxItem>
-						<DropdownMenu.CheckboxItem>My Stack</DropdownMenu.CheckboxItem>
-						<DropdownMenu.CheckboxItem>Inspiration</DropdownMenu.CheckboxItem>
-						<DropdownMenu.Separator />
-						<DropdownMenu.Item>
-							<Plus class="mr-2 h-4 w-4" /> Create List
-						</DropdownMenu.Item>
-					</DropdownMenu.Content>
-				</DropdownMenu.Root>
-			</div>
-		</Card.Header>
-		<Card.Content>
-			<div class="flex space-x-4 text-sm text-muted-foreground">
-				<div class="flex items-center">
-					<Circle class="mr-1 h-3 w-3 fill-sky-400 text-sky-400" />
-					TypeScript
-				</div>
-				<div class="flex items-center">
-					<Star class="mr-1 h-3 w-3" />
-					20k
-				</div>
-				<div>Updated April 2023</div>
-			</div>
-		</Card.Content>
-	</Card.Root>
-</BasicLayoutItem>
+<Card.Root class="h-full w-full xl:col-span-2">
+	<Card.Header class="flex flex-row items-center">
+		<div class="grid gap-2">
+			<Card.Title>Recente cijfers</Card.Title>
+			<Card.Description>De meest recente cijfers die binnen zijn.</Card.Description>
+		</div>
+		<Button href="/cijfers" size="sm" class="ml-auto gap-1">
+			Alle bekijken
+			<ArrowUpRight class="h-4 w-4" />
+		</Button>
+	</Card.Header>
+	<Card.Content>
+		<Table.Root>
+			<Table.Header>
+				<Table.Row>
+					<Table.Head>Toets</Table.Head>
+					<Table.Head class="xl:table.-column hidden">Type</Table.Head>
+					<Table.Head class="xl:table.-column hidden">Status</Table.Head>
+					<Table.Head class="xl:table.-column hidden">Date</Table.Head>
+					<Table.Head class="text-right">Cijfer</Table.Head>
+				</Table.Row>
+			</Table.Header>
+			<Table.Body class="h-full">
+				{#each marks as mark}
+					<Table.Row>
+						<Table.Cell>
+							<div class="font-medium">{mark.name}</div>
+							<div class="hidden text-sm text-muted-foreground md:inline">{mark.vak}</div>
+						</Table.Cell>
+						<Table.Cell class="xl:table.-column hidden">Sale</Table.Cell>
+						<Table.Cell class="xl:table.-column hidden">
+							<Badge class="text-xs" variant="outline">Approved</Badge>
+						</Table.Cell>
+						<Table.Cell class="md:table.-cell xl:table.-column hidden lg:hidden">
+							2023-06-23
+						</Table.Cell>
+						<Table.Cell class="text-right">{mark.received_grade}</Table.Cell>
+					</Table.Row>
+				{/each}
+			</Table.Body>
+		</Table.Root>
+	</Card.Content>
+</Card.Root>
